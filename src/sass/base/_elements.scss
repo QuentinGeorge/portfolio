@@ -1,0 +1,27 @@
+// Styles base elements
+
+html {
+    font: normal 14px/1.5 $segoeUIStack;
+    color: $cLaborText;
+    background-color: $cMainBackground;
+}
+
+body {
+    line-height: inherit;
+}
+
+a {
+    color: $cLink;
+    text-decoration: none;
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+svg {
+    fill: currentColor;
+}
+
+abbr {
+    text-decoration: none;
+}
