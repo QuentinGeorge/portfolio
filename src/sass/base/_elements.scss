@@ -1,9 +1,9 @@
 // Styles base elements
 
 html {
-    font: normal 14px/1.5 $segoeUIStack;
-    color: $cLaborText;
-    background-color: $cMainBackground;
+    // font: normal 14px/1.5 $segoeUIStack;
+    // color: $cLaborText;
+    // background-color: $cMainBackground;
 }
 
 body {
@@ -11,10 +11,10 @@ body {
 }
 
 a {
-    color: $cLink;
-    text-decoration: none;
+    // color: $cLink;
+    // text-decoration: none;
     &:hover {
-        text-decoration: underline;
+        // text-decoration: underline;
     }
 }
 

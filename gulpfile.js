@@ -1,6 +1,6 @@
  /* Gulpfile.js
  /
- /  Last modification 04/01/2017
+ /  Last modification 03/08/2017
 */
 
 "use strict";
@@ -23,8 +23,8 @@ var gulp = require( "gulp" ),
 
 // Utilities variables
 var sSrc = "src/",
-    sDest = "build/",
-    sProjectFolder = "DW-Projects/portfolio/",
+    sDest = "wordpress/wp-content/themes/portfolio/",
+    sProjectFolder = "DW-Projects/portfolio/wordpress/",
     sTaskError = "",
     fPlumberError = function( sTaskError ) {
         return {
@@ -32,8 +32,16 @@ var sSrc = "src/",
             message: "<%= error.message %>"
         }
     },
+    oCopy = {
+        in: sSrc + "only_copy_to_dest/**/*",
+        out: sDest
+    },
+    oImg = {
+        in: sSrc + "img_to_optim/**/*",
+        out: sDest + "assets/img/"
+    },
     oHTML = {
-        in: sSrc + "**/*.html",
+        in: sSrc + "**/*.php",
         out: sDest,
         minOpts: {
             collapseWhitespace: true,
@@ -44,20 +52,6 @@ var sSrc = "src/",
         plumberOpts: {
             errorHandler: gNotify.onError( fPlumberError( sTaskError = "HTML" ) )
         }
-    },
-    oAssets = {
-        in: sSrc + "assets/**/*",
-        out: sDest + "assets/"
-    },
-    oVendors = {
-        scripts: {
-            in: sSrc + "vendors/scripts/**/*",
-            out: sDest + "scripts/vendors/"
-        }
-    },
-    oImg = {
-        in: sSrc + "img_to_optim/**/*",
-        out: sDest + "assets/img/"
     },
     oStyles = {
         in: sSrc + "sass/**/*.scss",
@@ -93,34 +87,16 @@ var sSrc = "src/",
     },
     oBrowserSync = {
         initOpts: {
-            proxy: "http://localhost/" + sProjectFolder + sDest
+            proxy: "http://localhost/" + sProjectFolder
         }
     };
 
-// HTML tasks
-gulp.task( "html", function() {
+// Copy tasks
+gulp.task( "copy", function() {
     return gulp
-        .src( oHTML.in )
-        .pipe( gPlumber( oHTML.plumberOpts ) ) // Don't stop watch task if an error occured
-        // Minify HTML
-        .pipe( gHTMLMin( oHTML.minOpts ) )
-        .pipe( gulp.dest( oHTML.out ) );
-} );
-
-// Assets tasks
-gulp.task( "assets", function() {
-    return gulp
-        .src( oAssets.in )
-        // Copy assets files into destination directory
-        .pipe( gulp.dest( oAssets.out ) );
-} );
-
-// Vendors tasks
-gulp.task( "vendors", function() {
-    return gulp
-        .src( oVendors.scripts.in )
-        // Copy vendors scripts files into destination directory
-        .pipe( gulp.dest( oVendors.scripts.out ) );
+        .src( oCopy.in )
+        // Copy files wich doesn't need any modifications into destination directory
+        .pipe( gulp.dest( oCopy.out ) );
 } );
 
 // Images tasks
@@ -130,6 +106,16 @@ gulp.task( "img", function() {
         // Optimize images
         .pipe( gImageMin() )
         .pipe( gulp.dest( oImg.out ) );
+} );
+
+// HTML tasks
+gulp.task( "html", function() {
+    return gulp
+        .src( oHTML.in )
+        .pipe( gPlumber( oHTML.plumberOpts ) ) // Don't stop watch task if an error occured
+        // Minify HTML
+        .pipe( gHTMLMin( oHTML.minOpts ) )
+        .pipe( gulp.dest( oHTML.out ) );
 } );
 
 // Styles tasks
@@ -164,7 +150,7 @@ gulp.task( "scripts", function() {
     return gulp
         .src( oScripts.in )
         .pipe( gPlumber( oScripts.plumberOpts ) ) // Don't stop watch task if an error occured
-        // Compile es2015-js files
+        // Compile es2016-js files
         .pipe( gBabel() )
         // Minify & obfuscate JS
         .pipe( gUglify( oScripts.uglifyOpts ) )
@@ -180,15 +166,14 @@ gulp.task( "browser-sync", function() {
 
 // Watching files modifications & reload browser
 gulp.task( "watch", function() {
-    gulp.watch( oHTML.in, [ "html" ] ).on( "change", browserSync.reload );
-    gulp.watch( oAssets.in, [ "assets" ] ).on( "change", browserSync.reload );
-    gulp.watch( oVendors.scripts.in, [ "vendors" ] ).on( "change", browserSync.reload );
+    gulp.watch( oCopy.in, [ "copy" ] ).on( "change", browserSync.reload );
     gulp.watch( oImg.in, [ "img" ] ).on( "change", browserSync.reload );
+    gulp.watch( oHTML.in, [ "html" ] ).on( "change", browserSync.reload );
     gulp.watch( oStyles.in, [ "styles" ] ).on( "change", browserSync.reload );
     gulp.watch( oScripts.in, [ "lint", "scripts" ] ).on( "change", browserSync.reload );
 } );
 
 // Create command-line tasks
-gulp.task( "default", [ "html", "assets", "vendors", "img", "styles", "lint", "scripts" ] );
+gulp.task( "default", [ "copy", "img", "html", "styles", "lint", "scripts" ] );
 
 gulp.task( "work", [ "default", "watch", "browser-sync" ] );
