@@ -16,6 +16,19 @@ get_header();
         <?php endwhile; else: ?>
             <h2 class="projects__title" role="heading" aria-level="2">Projets</h2>
         <?php endif; ?>
+        <?php $posts = new WP_Query(['showpost' => 2, 'post_type' => 'projets']); // $post est déja utiliser par wordpress ?>
+        <?php if($posts->have_posts()): while($posts->have_posts()): $posts->the_post(); ?>
+            <article class="project">
+                <?php if(has_post_thumbnail()): ?>
+                    <h3 class="project__title"><?php the_title(); ?></h3>
+                    <a class="project__link" href="<?php the_permalink(); ?>" title="En savoir plus sur le projet" ><?php the_post_thumbnail('medium_large'); ?></a>
+                <?php else: ?>
+                    <h3 class="project__title"><a class="project__link" href="<?php the_permalink(); ?>" title="En savoir plus sur le projet" ><?php the_title(); ?></a></h3>
+                <?php endif; ?>
+            </article>
+        <?php endwhile; else: ?>
+            <p>Il n'y a pas de projets à afficher pour le moment.</p>
+        <?php endif; ?>
     </section>
 
 <?php get_footer(); ?>

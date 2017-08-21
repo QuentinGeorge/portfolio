@@ -12,11 +12,11 @@ define('DATA', '/assets/data/');
 
 // Register custom post-types
 function fRegisterTypes() {
-    register_nav_menus( array(
+    register_nav_menus(array(
         'header' => 'La navigation principale du site.',
         'footer' => 'La navigation du pied de page.'
-    ) );
-    register_post_type('projects', [
+    ));
+    register_post_type('projets', [
         'label' => 'Projets',
         'labels' => [
             'singular_name' => 'projet',
@@ -25,7 +25,9 @@ function fRegisterTypes() {
         'desription' => 'Permet d\'afficher les projets présentés sur le site.',
         'public' => true,
         'menu_position' => 20,
-        'menu_icon' => 'dashicons-art'
+        'menu_icon' => 'dashicons-art',
+        'taxonomies' => array('category'),
+        'supports' => array('title', 'editor', 'thumbnail')
     ]);
 }
 
