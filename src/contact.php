@@ -7,7 +7,7 @@
 get_header();
  ?>
 
-    <section class="contact">
+    <section class="contact__content">
         <?php if(have_posts()): while(have_posts()): the_post(); ?>
             <h2 class="contact__title" role="heading" aria-level="2"><?php the_title(); ?></h2>
             <header class="contact__header">

@@ -7,7 +7,7 @@
 get_header();
  ?>
 
-    <section class="projects__page">
+    <section class="projects__content">
         <?php if(have_posts()): while(have_posts()): the_post(); ?>
             <h2 class="projects__title" role="heading" aria-level="2"><?php the_title(); ?></h2>
             <header class="projects__header">
@@ -16,7 +16,7 @@ get_header();
         <?php endwhile; else: ?>
             <h2 class="projects__title" role="heading" aria-level="2">Projets</h2>
         <?php endif; ?>
-        <?php $posts = new WP_Query(['showpost' => 2, 'post_type' => 'projets']); // $post est déja utiliser par wordpress ?>
+        <?php $posts = new WP_Query(['post_type' => 'projets']); // $post is already used by wordpress ?>
         <?php if($posts->have_posts()): while($posts->have_posts()): $posts->the_post(); ?>
             <article class="project">
                 <?php if(has_post_thumbnail()): ?>
