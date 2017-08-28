@@ -1,21 +1,19 @@
 <?php
+
 /*
 
     Template Name: Page à propos
 
 */
+
+$sAlternativePageTitle = 'À propos';
+
 get_header();
- ?>
+
+?>
 
     <section class="about__content">
-        <?php if(have_posts()): while(have_posts()): the_post(); ?>
-            <h2 class="about__title" role="heading" aria-level="2"><?php the_title(); ?></h2>
-            <header class="about__header">
-                <?php the_content(); ?>
-            </header>
-        <?php endwhile; else: ?>
-            <h2 class="about__title" role="heading" aria-level="2">À propos</h2>
-        <?php endif; ?>
+        <?php include(locate_template('part-content.php')); ?>
         <nav class="about__nav">
             <h3 class="about__nav__title" role="heading" aria-level="3">Voir mon CV</h3>
             <ul>

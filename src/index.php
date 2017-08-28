@@ -1,20 +1,20 @@
 <?php
+
 /*
 
     Template Name: Page d'accueil
 
 */
-get_header(); ?>
+
+$sAlternativePageTitle = 'Accueil';  // use in part-content.php if the page has no title defined by WP
+
+get_header();
+
+?>
 
     <section class="index__content">
-        <?php if(have_posts()): while(have_posts()): the_post(); ?>
-            <h2 class="index__title" role="heading" aria-level="2"><?php the_title(); ?></h2>
-            <header class="index__header">
-                <?php the_content(); ?>
-            </header>
-        <?php endwhile; else: ?>
-            <h2 class="index__title" role="heading" aria-level="2">Accueil</h2>
-        <?php endif; ?>
+        <?php include(locate_template('part-content.php')); ?>
+        <!-- coold use: get_template_part('part', 'content'); instead but with this way we can have access to the variable $sAlternativePageTitle in part-content.php -->
     </section>
     <section class="index__content">
         <h2 class="index__title" role="heading" aria-level="2">Quelques projets</h2>
