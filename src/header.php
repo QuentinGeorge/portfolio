@@ -25,7 +25,7 @@
                         <ul class="navigation__sub">
                             <?php foreach ($oItem->children as $oSub): ?>
                             <li class="navigation__item">
-                                <a href="<?= $oItem->url; ?>" class="navigation__link"><?= $oSub->label; ?></a>
+                                <a class="navigation__link" href="<?= $oItem->url; ?>"><?= $oSub->label; ?></a>
                             </li>
                             <?php endforeach; ?>
                         </ul>
