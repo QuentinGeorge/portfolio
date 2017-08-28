@@ -16,8 +16,8 @@ get_header();
         <?php endwhile; else: ?>
             <h2 class="projects__title" role="heading" aria-level="2">Projets</h2>
         <?php endif; ?>
-        <?php $posts = new WP_Query(['post_type' => 'projets']); // $post is already used by wordpress ?>
-        <?php if($posts->have_posts()): while($posts->have_posts()): $posts->the_post(); ?>
+        <?php $oPost = new WP_Query(['post_type' => 'projets']); ?>
+        <?php if($oPost->have_posts()): while($oPost->have_posts()): $oPost->the_post(); ?>
             <article class="project">
                 <?php if(has_post_thumbnail()): ?>
                     <h3 class="project__title"><?php the_title(); ?></h3>
