@@ -29,6 +29,17 @@ function fRegisterTypes() {
         'taxonomies' => array('category'),
         'supports' => array('title', 'editor', 'thumbnail')
     ]);
+    register_taxonomy('tech', 'projets', [
+        'label' => 'Technologies',
+        'labels' => [
+            'singular_name' => 'Technologie',
+            'edit_item' => 'Editer la technologie',
+            'add_new_item' => 'Ajouter une nouvelle technologie'
+        ],
+        'desription' => 'Permet de préciser une technologie utilisée pour réaliser ce projet.',
+        'public' => true,
+        'hierarchical' => true
+    ]);
 }
 
 // Display title
@@ -79,4 +90,60 @@ function fGetNavItems($sLocation) {
         $aNav[$oItem->parent]->children[] = $oItem;
     }
     return $aNav;
+}
+
+function fSortTermsByImportanceFieldValue($oTerm1, $oTerm2) {
+    if ($oTerm1->importance == $oTerm2->importance) {
+        return 0;
+    }
+    return ($oTerm1->importance < $oTerm2->importance) ? -1 : 1;
+}
+
+function fSortTechnologies($aTerms) {
+    $aTech = $aTerms;
+    $aChildTerms = [];
+
+    // sort elements
+    usort($aTech, 'fSortTermsByImportanceFieldValue');
+
+    // move elements childs from tech array to child array
+    foreach ($aTech as $key => $value) {
+        if ($value->parent !== 0) {
+            if (!isset($aChildTerms[$value->parent])) {
+                $aChildTerms[$value->parent] = array('0' => $value);
+            } else {
+                array_push($aChildTerms[$value->parent], $value);
+            }
+            unset($aTech[$key]);
+        }
+    }
+    // put elements childs inside their parent
+    if (!empty($aChildTerms)) {
+        foreach ($aChildTerms as $childKey => $children) {
+            foreach ($aTech as $parent) {
+                if ($parent->term_id == $childKey) {
+                    $parent->children = $children;
+                    break;
+                }
+            }
+        }
+    }
+
+    return $aTech;
+}
+
+function fGetTechnologies() {
+    $aTerms = wp_get_post_terms(get_the_ID(), 'tech', ['orderby' => 'name', 'order' => 'ASC', 'fields' => 'all' ]);
+
+    // get the importance field from ACF Extention
+    foreach ($aTerms as $value) {
+        $oImportance = get_field('importance', $value);
+        if (isset($oImportance)) {
+            $value->importance = $oImportance;
+        } else {
+            $value->importance = 999;
+        }
+    }
+
+    return $aTechnologies = fSortTechnologies($aTerms);
 }
