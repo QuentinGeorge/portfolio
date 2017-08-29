@@ -1,9 +1,9 @@
 // Styles base elements
 
 html {
-    font: normal 14px/1.5 $ptSansStack;
-    // color: $cLaborText;
-    // background-color: $cMainBackground;
+    font: normal 16px/1.5 $ptSansStack;
+    color: $cLaborText;
+    background-color: $cMainBackground;
 }
 
 body {
@@ -11,14 +11,15 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-	font-family: 'BariolWebfont';
+    font-family: $bariolStack;
+    font-size: 1.5rem;
 }
 
 a {
-    // color: $cLink;
-    // text-decoration: none;
+    color: $cLink;
+    text-decoration: none;
     &:hover {
-        // text-decoration: underline;
+        text-decoration: underline;
     }
 }
 

@@ -1,1 +1,32 @@
 // Footer specific styles
+
+footer .navigation {
+    padding: 1rem;
+    background-color: $cFooterBackground;
+    color: $cMainBackground;
+    &__container {
+        max-width: $sMainMaxSize;
+        margin: 0 auto;
+    }
+    &__item {
+        display: block;
+        margin: 1rem;
+    }
+    &__link {
+        color: $cMainBackground;
+    }
+}
+
+@media screen and (min-width: 520px) {
+    footer .navigation {
+        &__container {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap-reverse;
+            justify-content: space-between;
+        }
+        &__item {
+            display: inline-block;
+        }
+    }
+}

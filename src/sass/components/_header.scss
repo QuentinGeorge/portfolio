@@ -1,1 +1,86 @@
 // Header specific styles
+
+header .navigation {
+    position: relative;
+    padding: 0 1.5rem;
+    background-color: $cMainItemBackground;
+    @include clearFix;
+    &__container {
+        float: right;
+        display: block;
+        max-width: $sMainMaxSize;
+        width: 3.5rem;
+        height: 3.5rem;
+        margin: 0 auto;
+        background: url('#{ $imgPath }burger-menu.svg') center no-repeat;
+        background-size: 45% 45%;
+    }
+    &__item {
+        background-color: $cMainItemBackground;
+        position: absolute;
+        top: -9999px;
+        left: 0;
+        &:first-child {
+            position: absolute;
+            top: 0;
+            left: 1.5rem;
+        }
+        &:hover {
+            background-color: $cMainItemBackgroundHover;
+        }
+    }
+    &__link {
+        display: block;
+        padding: 1rem;
+        color: $cMainBackground;
+        &:hover {
+            text-decoration: none;
+        }
+        &:focus {
+            background-color: $cMainItemBackgroundHover;
+        }
+    }
+}
+
+header .navigation__item:first-child a {
+    width: 1.5rem;
+    height: 1.5rem;
+    background: url('#{ $imgPath }home.svg') center no-repeat;
+    background-size: 60% 60%;
+    text-indent: -99999px;
+    &:focus {
+        background: url('#{ $imgPath }home.svg') center no-repeat,
+        $cMainItemBackgroundHover;
+        background-size: 60% 60%;
+    }
+}
+
+@media screen and (min-width: 520px) {
+    header .navigation {
+        &__container {
+            width: auto;
+            height: auto;
+            float: none;
+            background: none;
+        }
+        &__item {
+            display: inline-block;
+            position: relative;
+            top: 0;
+            &:first-child {
+                position: relative;
+                left: 0;
+            }
+        }
+    }
+
+    header .navigation__item:first-child a {
+        width: auto;
+        height: auto;
+        background: none;
+        text-indent: 0;
+        &:focus {
+            background: none;
+        }
+    }
+}

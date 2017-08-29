@@ -7,8 +7,8 @@ $ptSansStack: "PT Sans", Helvetica, Arial, sans-serif;
 // Bariol
 @font-face {
     font-family: 'Bariol';
-    src: url('#{ $fontPath }bariol/bariol_regular-webfont.eot'),
-         url('#{ $fontPath }bariol/bariol_regular-webfont.eot?#iefix') format('embedded-opentype'),
+    src: url('#{ $fontPath }bariol/bariol_regular-webfont.eot');
+    src: url('#{ $fontPath }bariol/bariol_regular-webfont.eot?#iefix') format('embedded-opentype'),
          url('#{ $fontPath }bariol/bariol_regular-webfont.woff2') format('woff2'),
          url('#{ $fontPath }bariol/bariol_regular-webfont.woff') format('woff'),
          url('#{ $fontPath }bariol/bariol_regular-webfont.ttf') format('truetype'),
@@ -19,8 +19,8 @@ $ptSansStack: "PT Sans", Helvetica, Arial, sans-serif;
 
 @font-face {
     font-family: 'Bariol';
-    src: url('#{ $fontPath }bariol/bariol_regular_italic-webfont.eot'),
-         url('#{ $fontPath }bariol/bariol_regular_italic-webfont.eot?#iefix') format('embedded-opentype'),
+    src: url('#{ $fontPath }bariol/bariol_regular_italic-webfont.eot');
+    src: url('#{ $fontPath }bariol/bariol_regular_italic-webfont.eot?#iefix') format('embedded-opentype'),
          url('#{ $fontPath }bariol/bariol_regular_italic-webfont.woff2') format('woff2'),
          url('#{ $fontPath }bariol/bariol_regular_italic-webfont.woff') format('woff'),
          url('#{ $fontPath }bariol/bariol_regular_italic-webfont.ttf') format('truetype'),

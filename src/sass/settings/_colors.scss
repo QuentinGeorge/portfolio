@@ -2,10 +2,14 @@
 
 // Backgrounds colors
 $cMainBackground: #FFF;
+$cMainItemBackground: #0076CC;
+$cMainItemBackgroundHover: lighten($cMainItemBackground, 5%);
+$cFooterBackground: darken($cMainItemBackground, 15%);
 
 // Texts colors
-$cTitleText: #24292E;
-$cLaborText: #586069;
+$cLaborText: #323232;
+$cLink: $cMainItemBackground;
+$cMainNavLink: $cMainBackground;
 
 // Borders colors
 
