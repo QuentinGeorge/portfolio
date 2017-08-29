@@ -42,16 +42,16 @@ var sSrc = "src/",
     },
     oHTML = {
         in: sSrc + "**/*.php",
-        out: sDest
-        // minOpts: {
-        //     collapseWhitespace: true,
-        //     removeComments: true,
-        //     minifyCSS: true,
-        //     minifyJS: true
-        // },
-        // plumberOpts: {
-        //     errorHandler: gNotify.onError( fPlumberError( sTaskError = "HTML" ) )
-        // }
+        out: sDest,
+        minOpts: {
+            collapseWhitespace: true,
+            removeComments: true,
+            minifyCSS: true,
+            minifyJS: true
+        },
+        plumberOpts: {
+            errorHandler: gNotify.onError( fPlumberError( sTaskError = "HTML" ) )
+        }
     },
     oStyles = {
         in: sSrc + "sass/**/*.scss",
@@ -112,9 +112,9 @@ gulp.task( "img", function() {
 gulp.task( "html", function() {
     return gulp
         .src( oHTML.in )
-        // .pipe( gPlumber( oHTML.plumberOpts ) ) // Don't stop watch task if an error occured
-        // // Minify HTML
-        // .pipe( gHTMLMin( oHTML.minOpts ) )
+        .pipe( gPlumber( oHTML.plumberOpts ) ) // Don't stop watch task if an error occured
+        // Minify HTML
+        .pipe( gHTMLMin( oHTML.minOpts ) )
         .pipe( gulp.dest( oHTML.out ) );
 } );
 
