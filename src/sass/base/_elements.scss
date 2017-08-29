@@ -1,13 +1,17 @@
 // Styles base elements
 
 html {
-    // font: normal 14px/1.5 $segoeUIStack;
+    font: normal 14px/1.5 $ptSansStack;
     // color: $cLaborText;
     // background-color: $cMainBackground;
 }
 
 body {
     line-height: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'BariolWebfont';
 }
 
 a {
