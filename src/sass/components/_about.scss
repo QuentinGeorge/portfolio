@@ -1,0 +1,31 @@
+// about page specific styles
+
+.page__content header {
+    font-size: 1rem;
+}
+
+.about__container {
+    display: block;
+}
+
+.about .link {
+    &__container {
+        display: block;
+    }
+    &--button {
+        margin-top: 2rem;
+    }
+}
+
+@media screen and (min-width: $sAboutMobileSize) {
+    .about .link__container:first-child {
+        margin-right: 4rem;
+    }
+
+    .about__container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
