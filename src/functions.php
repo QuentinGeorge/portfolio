@@ -27,7 +27,7 @@ function fRegisterTypes() {
         'menu_position' => 20,
         'menu_icon' => 'dashicons-art',
         'taxonomies' => array('category'),
-        'supports' => array('title', 'editor', 'thumbnail')
+        'supports' => array('title', 'thumbnail')
     ]);
     register_taxonomy('tech', 'projets', [
         'label' => 'Technologies',
@@ -146,4 +146,10 @@ function fGetTechnologies() {
     }
 
     return $aTechnologies = fSortTechnologies($aTerms);
+}
+
+function fGetACFImage($sImgField, $sImgSize = 'medium_large') {
+    $sImgID = get_field($sImgField);
+
+	return $oImg = wp_get_attachment_image($sImgID, $sImgSize);
 }

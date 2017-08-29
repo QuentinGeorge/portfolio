@@ -12,7 +12,7 @@ get_header();
 
 ?>
 
-    <section class="about__content">
+    <section class="page__content">
         <?php include(locate_template('part-content.php')); ?>
         <nav class="about__nav">
             <h3 class="about__nav__title" role="heading" aria-level="3">Voir mon CV</h3>

@@ -12,7 +12,7 @@ get_header();
 
 ?>
 
-    <section class="projects__content">
+    <section class="page__content">
         <?php include(locate_template('part-content.php')); ?>
         <?php $oPost = new WP_Query(['post_type' => 'projets']); ?>
         <?php if($oPost->have_posts()): while($oPost->have_posts()): $oPost->the_post(); ?>
