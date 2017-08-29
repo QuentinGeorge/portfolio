@@ -12,11 +12,11 @@ get_header();
 
 ?>
 
-    <section class="page__content">
+    <section class="page__content projects">
         <?php include(locate_template('part-content.php')); ?>
         <?php $oPost = new WP_Query(['post_type' => 'projets']); ?>
         <?php if($oPost->have_posts()): while($oPost->have_posts()): $oPost->the_post(); ?>
-            <article class="project">
+            <article class="project page__section">
                 <?php if(has_post_thumbnail()): ?>
                     <h3 class="project__title"><?php the_title(); ?></h3>
                     <a class="project__link" href="<?php the_permalink(); ?>" title="En savoir plus sur le projet" ><?php the_post_thumbnail('medium_large'); ?></a>

@@ -12,7 +12,7 @@ get_header();
 
 ?>
 
-    <section class="page__content">
+    <section class="page__content contact">
         <?php include(locate_template('part-content.php')); ?>
         <form class="contact__form" action="/contactez-moi/#wpcf7-f36-o1" method="POST">
             <fieldset>
