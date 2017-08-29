@@ -1,1 +1,69 @@
 // view-project page specific styles
+
+.view-project img {
+    max-width: 256px;
+    height: auto;
+    border-radius: $sFigureBorderRadius;
+}
+
+.view-project .project {
+    &__intro {
+        margin-top: 0;
+    }
+    &__figure {
+        display: inline-block;
+        margin: 1rem 0;
+    }
+}
+
+.view-project .project__intro figure {
+    margin-top: 0;
+}
+
+.view-project .project__container {
+    display: block;
+}
+
+.view-project .link {
+    &__container {
+        display: block;
+    }
+    &--button {
+        margin-top: 2rem;
+    }
+}
+
+.view-project .tech {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 3rem;
+    text-align: left;
+    font-size: 1.181rem;
+    &__item {
+        margin: .75rem 0;
+    }
+    &__icon {
+        color: $cMainItemBackground;
+        vertical-align: middle;
+        margin-bottom: .25rem;
+    }
+}
+
+.view-project .sub-tech {
+    margin: 0;
+}
+
+@media screen and (min-width: $sMobileSize) {
+    .view-project .link__container:first-child {
+        margin-right: 4rem;
+    }
+
+    .view-project .project__container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
