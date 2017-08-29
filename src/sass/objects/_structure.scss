@@ -8,6 +8,13 @@ body {
 
 .page__content {
     max-width: $sMainMaxSize - 32; // 32 = 2rem
-    margin: 0 auto;
-    padding: 2rem;
+    margin: 2rem auto;
+    padding: 0 2rem;
+    text-align: center;
+}
+
+@media screen and (min-width: $sMobileSize) {
+    .page__content {
+        text-align: left;
+    }
 }

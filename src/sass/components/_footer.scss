@@ -4,6 +4,7 @@ footer .navigation {
     padding: 1rem;
     background-color: $cFooterBackground;
     color: $cMainBackground;
+    text-align: center;
     &__container {
         max-width: $sMainMaxSize;
         margin: 0 auto;
@@ -17,8 +18,9 @@ footer .navigation {
     }
 }
 
-@media screen and (min-width: 520px) {
+@media screen and (min-width: $sMobileSize) {
     footer .navigation {
+        text-align: left;
         &__container {
             display: flex;
             flex-direction: row;

@@ -55,7 +55,7 @@ header .navigation__item:first-child a {
     }
 }
 
-@media screen and (min-width: 520px) {
+@media screen and (min-width: $sMobileSize) {
     header .navigation {
         &__container {
             width: auto;
