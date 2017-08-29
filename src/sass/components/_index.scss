@@ -1,0 +1,83 @@
+// index page specific styles
+
+.index {
+    &__container  {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    &__article {
+        display: inline-block;
+        max-width: 256px;
+    }
+}
+
+.index__project .project__link {
+    display: block;
+    margin-top: 1.6rem;
+    padding-top: 1rem;
+    color: $cMainBackground;
+    background-color: $cMainItemBackground;
+    border-radius: $sFigureBorderRadius;
+    &:hover {
+        text-decoration: none;
+        background-color: $cMainItemBackgroundHover;
+    }
+}
+
+.index__project .project__link h4 {
+    margin-top: 0;
+}
+
+.index .project__figure img {
+    border-radius: 0 0 $sFigureBorderRadius $sFigureBorderRadius;
+}
+
+.index .project__title {
+    text-align: center;
+}
+
+.index__article img {
+    max-width: 256px;
+    height: auto;
+}
+
+@media screen and (min-width: $sMobileSize) {
+    .index {
+        &__article {
+            display: inline-block;
+            max-width: 300px;
+            margin: 0 4rem;
+        }
+    }
+
+    .index__article img {
+        max-width: 300px;
+        height: auto;
+    }
+}
+
+@media screen and (min-width: $sIndexMediumSize) {
+    .index {
+        &__article {
+            display: inline-block;
+            margin: 0;
+            &:first-child {
+                margin-right: 4rem;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: $sIndexBigSize) {
+    .index {
+        &__article {
+            max-width: 400px;
+        }
+    }
+
+    .index__article img {
+        max-width: 400px;
+    }
+}

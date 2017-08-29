@@ -8,13 +8,26 @@ body {
 
 .page__content {
     max-width: $sMainMaxSize - 32; // 32 = 2rem
-    margin: 2rem auto;
+    margin: 2rem auto $sMobilePageSectionsGapSize auto;
     padding: 0 2rem;
     text-align: center;
 }
 
+.page__content header {
+    font-size: 1.414rem;
+}
+
+.page__section {
+    margin-top: $sMobilePageSectionsGapSize;
+}
+
 @media screen and (min-width: $sMobileSize) {
     .page__content {
+        margin: 6rem auto $sDesktopPageSectionsGapSize auto;
         text-align: left;
+    }
+
+    .page__section {
+        margin-top: $sDesktopPageSectionsGapSize;
     }
 }

@@ -33,6 +33,7 @@ header .navigation {
         display: block;
         padding: 1rem;
         color: $cMainBackground;
+        font-weight: 600;
         &:hover {
             text-decoration: none;
         }
@@ -81,6 +82,7 @@ header .navigation__item:first-child a {
         text-indent: 0;
         &:focus {
             background: none;
+            background-color: $cMainItemBackgroundHover;
         }
     }
 }
