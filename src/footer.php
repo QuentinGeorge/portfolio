@@ -16,5 +16,9 @@
                 </ul>
             </nav>
         </footer>
+
+        <script type="text/javascript" src="<?php fThemeAsset('/scripts/vendors/jquery-3.2.1.min.js'); ?>"></script>
+        <script type="text/javascript" src="<?php fThemeAsset('/scripts/scripts.min.js'); ?>"></script>
+
     </body>
 </html>

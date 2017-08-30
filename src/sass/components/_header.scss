@@ -29,6 +29,7 @@ header .navigation {
         position: absolute;
         top: -9999px;
         left: 0;
+        margin-right: -4px; // avoid html space
         &:first-child {
             position: absolute;
             top: 0;
@@ -65,7 +66,7 @@ header .navigation__item:first-child a {
     }
 }
 
-.sticky {
+.header .sticky {
     box-shadow: 0 2px 2px $cMainNavShadow;
 }
 
@@ -85,7 +86,22 @@ header .navigation__item:first-child a {
                 position: relative;
                 left: 0;
             }
+            &:before {
+                display: inline-block;
+                width: 0;
+                height: 0;
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                margin-left: 42%;
+                border: 8px solid transparent;
+            }
         }
+    }
+
+    .header .active:before {
+        border-bottom-color: $cMainNavBorder;
     }
 
     header .navigation__item:first-child a {

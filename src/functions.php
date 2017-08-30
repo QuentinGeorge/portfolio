@@ -7,7 +7,6 @@ add_theme_support('post-thumbnails');
 // Define folders path
 define('STYLES', '/css/');
 define('IMG', '/assets/img/');
-define('FONTS', '/assets/fonts/');
 define('DATA', '/assets/data/');
 
 // Register custom post-types
