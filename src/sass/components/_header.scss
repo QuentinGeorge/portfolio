@@ -1,9 +1,18 @@
 // Header specific styles
 
+.header {
+    min-height: 3.5rem;
+}
+
 header .navigation {
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
     padding: 0 1.5rem;
     background-color: $cMainItemBackground;
+    border-bottom: 2px solid $cMainNavBorder;
+    z-index: 1;
     @include clearFix;
     &__container {
         float: right;
@@ -54,6 +63,10 @@ header .navigation__item:first-child a {
         $cMainItemBackgroundHover;
         background-size: 60% 60%;
     }
+}
+
+.sticky {
+    box-shadow: 0 2px 2px $cMainNavShadow;
 }
 
 @media screen and (min-width: $sMobileSize) {

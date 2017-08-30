@@ -17,11 +17,8 @@
     min-width: 256px;
     max-width: 600px;
     width: 100%;
-    box-sizing: border-box;
-}
-
-.contact input[type=text], .contact input[type=email], .contact textarea {
     padding: .2rem .5rem .1rem .4rem;
+    box-sizing: border-box;
 }
 
 .contact input[type=submit] {
@@ -33,7 +30,7 @@
     color: $cMainBackground;
     background-color: $cMainItemBackground;
     border: none;
-    border-radius: 2rem 2rem;
+    border-radius: 32px;
     &:hover {
         text-decoration: none;
         background-color: $cMainItemBackgroundHover;
