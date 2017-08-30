@@ -18,20 +18,29 @@
             <nav class="navigation">
                 <h2 class="navigation__title hidden" role="heading" aria-level="2">Navigation principale</h2>
                 <ul class="navigation__container">
-                    <?php foreach (fGetNavItems('header') as $oItem): ?>
-                    <li class="navigation__item">
-                        <a href="<?= $oItem->url; ?>" class="navigation__link"><?= $oItem->label; ?></a>
-                        <?php if($oItem->children): ?>
-                        <ul class="navigation__sub">
-                            <?php foreach ($oItem->children as $oSub): ?>
-                            <li class="navigation__item">
-                                <a class="navigation__link" href="<?= $oItem->url; ?>"><?= $oSub->label; ?></a>
-                            </li>
-                            <?php endforeach; ?>
-                        </ul>
-                        <?php endif; ?>
+                    <?php $oMenuItems = fGetNavItems('header') ?>
+                    <li class="navigation__item navigation__first-item">
+                        <a class="navigation__link" href="<?= $oMenuItems[0]->url; ?>"><?= $oMenuItems[0]->label; ?></a>
                     </li>
-                <?php endforeach; ?>
+                    <div class="navigation__item-container">
+                        <li aria-hidden="true" class="navigation--burger">
+                            <a aria-hidden="true" class="navigation--burger__link" href="#">Burger Menu</a>
+                        </li>
+                        <?php foreach ($oMenuItems as $key => $oItem): if($key > 0): ?>
+                        <li class="navigation__item">
+                            <a class="navigation__link" href="<?= $oItem->url; ?>"><?= $oItem->label; ?></a>
+                            <?php if($oItem->children): ?>
+                            <ul class="navigation__sub">
+                                <?php foreach ($oItem->children as $oSub): ?>
+                                <li class="navigation__item">
+                                    <a class="navigation__link" href="<?= $oItem->url; ?>"><?= $oSub->label; ?></a>
+                                </li>
+                                <?php endforeach; ?>
+                            </ul>
+                            <?php endif; ?>
+                        </li>
+                    <?php endif; endforeach; ?>
+                </div>
                 </ul>
             </nav>
         </header>

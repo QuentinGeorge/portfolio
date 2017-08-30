@@ -13,30 +13,55 @@ header .navigation {
     background-color: $cMainItemBackground;
     border-bottom: 2px solid $cMainNavBorder;
     z-index: 1;
-    @include clearFix;
     &__container {
-        float: right;
-        display: block;
-        max-width: $sMainMaxSize;
-        width: 3.5rem;
+        position: relative;
         height: 3.5rem;
+        max-width: $sMainMaxSize;
         margin: 0 auto;
-        background: url('#{ $imgPath }burger-menu.svg') center no-repeat;
-        background-size: 45% 45%;
     }
     &__item {
         background-color: $cMainItemBackground;
+    }
+    &__item-container {
+        display: block;
         position: absolute;
-        top: -9999px;
+        top: 0;
+        right: -1.5rem;
+        border-bottom: .5rem solid $cMainNavBorder;
+    }
+    &__first-item {
+        position: absolute;
+        top: 0;
         left: 0;
-        margin-right: -4px; // avoid html space
-        &:first-child {
-            position: absolute;
-            top: 0;
-            left: 1.5rem;
-        }
-        &:hover {
-            background-color: $cMainItemBackgroundHover;
+    }
+    &--burger {
+        margin-right: 1.5rem;
+        text-indent: -99999px;
+        @include clearFix;
+        &__link {
+            display: block;
+            float: right;
+            width: 3.5rem;
+            height: 3.5rem;
+            background: url('#{ $imgPath }burger-menu.svg') center no-repeat;
+            background-size: 45% 45%;
+            &:hover {
+                background-color: $cMainItemBackgroundHover;
+            }
+            &:focus {
+                background-color: $cMainItemBackgroundHover;
+            }
+            &:after {
+                display: inline-block;
+                width: 0;
+                height: 0;
+                content: "";
+                position: absolute;
+                top: 2.3rem;
+                right: 23%;
+                border: 12px solid transparent;
+                border-bottom-color: $cMainNavBorder;
+            }
         }
     }
     &__link {
@@ -45,6 +70,7 @@ header .navigation {
         color: $cMainBackground;
         font-weight: 600;
         &:hover {
+            background-color: $cMainItemBackgroundHover;
             text-decoration: none;
         }
         &:focus {
@@ -53,7 +79,24 @@ header .navigation {
     }
 }
 
-header .navigation__item:first-child a {
+header .navigation__item-container .navigation__item a {
+    padding: 1rem 2.5rem;
+    background-color: $cMainNavBorder;
+    border-left: 2px solid $cMainNavBorder;
+    &:hover {
+        background-color: $cMainItemBackgroundHover;
+    }
+    &:focus {
+        background-color: $cMainItemBackgroundHover;
+    }
+}
+
+header .navigation__item:nth-child(2) {
+    padding-top: 5px;
+    background-color: $cMainNavBorder;
+}
+
+header .navigation__first-item a {
     width: 1.5rem;
     height: 1.5rem;
     background: url('#{ $imgPath }home.svg') center no-repeat;
@@ -66,26 +109,32 @@ header .navigation__item:first-child a {
     }
 }
 
+// sticky styles
+
 .header .sticky {
     box-shadow: 0 2px 2px $cMainNavShadow;
 }
 
+.header .sticky .navigation__item-container {
+    box-shadow: 2px 2px 2px $cMainNavShadow; // move 2px right to avoid shadow on left inside the nav bar
+}
+
+// burger show/hide styles
+
+header .navigation__container .hide {
+    border: 0;
+}
+
+header .navigation__container .hide .navigation--burger__link:after {
+    border: 0;
+}
+
 @media screen and (min-width: $sMobileSize) {
     header .navigation {
-        &__container {
-            width: auto;
-            height: auto;
-            float: none;
-            background: none;
-        }
         &__item {
             display: inline-block;
             position: relative;
-            top: 0;
-            &:first-child {
-                position: relative;
-                left: 0;
-            }
+            margin-right: -4px; // avoid html space
             &:before {
                 display: inline-block;
                 width: 0;
@@ -98,13 +147,36 @@ header .navigation__item:first-child a {
                 border: 8px solid transparent;
             }
         }
+        &__first-item {
+            position: relative;
+        }
+        &__item-container {
+            display: inline-block;
+            position: relative;
+            right: 0;
+            border: 0;
+        }
+        &--burger {
+            display: none;
+        }
+    }
+
+    header .navigation__item-container .navigation__item a {
+        padding: 1rem;
+        background-color: $cMainItemBackground;
+        border: 0;
+    }
+
+    header .navigation__item:nth-child(2) {
+        padding: 0;
+        background-color: $cMainItemBackground;
     }
 
     .header .active:before {
         border-bottom-color: $cMainNavBorder;
     }
 
-    header .navigation__item:first-child a {
+    header .navigation__first-item a {
         width: auto;
         height: auto;
         background: none;
