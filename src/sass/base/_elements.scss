@@ -41,7 +41,7 @@ abbr {
         color: $cMainBackground;
         background-color: $cMainItemBackground;
         font-weight: 600;
-        border-radius: .4rem 2rem;
+        border-radius: 6px 32px;
         &:hover {
             text-decoration: none;
             background-color: $cMainItemBackgroundHover;
@@ -74,7 +74,7 @@ h2:before, h3:before {
     margin: 0 auto .5rem auto;
     content: "";
     background-color: $cMainItemBackground;
-    border-radius: .4rem 2rem;
+    border-radius: 6px 32px;
 }
 
 @media screen and (min-width: $sMobileSize) {
