@@ -66,4 +66,20 @@
         flex-wrap: wrap;
         justify-content: center;
     }
+
+    .view-project img {
+        max-width: 410px;
+    }
+}
+
+@media screen and (min-width: $sProjectsMediumSize) {
+    .view-project img {
+        max-width: 590px;
+    }
+}
+
+@media screen and (min-width: $sProjectsBigSize) {
+    .view-project img {
+        max-width: 100%;
+    }
 }

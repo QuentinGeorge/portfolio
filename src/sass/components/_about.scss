@@ -16,6 +16,9 @@
         margin-top: 2rem;
     }
 }
+.about header p {
+    margin: 1rem 0;
+}
 
 @media screen and (min-width: $sAboutMobileSize) {
     .about .link__container:first-child {
