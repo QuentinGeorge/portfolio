@@ -1,1 +1,50 @@
 // contact page specific styles
+
+.contact header {
+    margin-bottom: 2rem;
+    line-height: 1.2;
+}
+
+.contact legend {
+    line-height: 1.2;
+}
+
+.contact__form p {
+    margin: 1.5rem 0;
+}
+
+.contact input, .contact textarea {
+    min-width: 256px;
+    max-width: 600px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.contact input[type=text], .contact input[type=email], .contact textarea {
+    padding: .2rem .5rem .1rem .4rem;
+}
+
+.contact input[type=submit] {
+    max-width: 300px;
+    padding: 1.2rem;
+    font-family: $ptSansStack;
+    font-size: 1.181rem;
+    font-weight: 600;
+    color: $cMainBackground;
+    background-color: $cMainItemBackground;
+    border: none;
+    border-radius: 2rem 2rem;
+    &:hover {
+        text-decoration: none;
+        background-color: $cMainItemBackgroundHover;
+    }
+    &:focus {
+        background-color: $cMainItemBackgroundHover;
+    }
+}
+
+@media screen and (min-width: $sMobileSize) {
+    .contact header, .contact legend {
+        line-height: inherit;
+    }
+}
