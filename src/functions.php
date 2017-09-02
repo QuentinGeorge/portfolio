@@ -9,12 +9,15 @@ define('STYLES', '/css/');
 define('IMG', '/assets/img/');
 define('DATA', '/assets/data/');
 
+// Define constants
+define('INDEX_PROJECTS_OVERVIEWS_NUM', 2);
+
 // Register custom post-types
 function fRegisterTypes() {
-    register_nav_menus(array(
+    register_nav_menus([
         'header' => 'La navigation principale du site.',
         'footer' => 'La navigation du pied de page.'
-    ));
+    ]);
     register_post_type('projets', [
         'label' => 'Projets',
         'labels' => [
@@ -25,8 +28,8 @@ function fRegisterTypes() {
         'public' => true,
         'menu_position' => 20,
         'menu_icon' => 'dashicons-art',
-        'taxonomies' => array('category'),
-        'supports' => array('title', 'thumbnail')
+        'taxonomies' => ['category'],
+        'supports' => ['title', 'thumbnail']
     ]);
     register_taxonomy('tech', 'projets', [
         'label' => 'Technologies',
@@ -131,6 +134,7 @@ function fSortTechnologies($aTerms) {
     return $aTech;
 }
 
+// Get technology term and sort by importance taxonomy
 function fGetTechnologies() {
     $aTerms = wp_get_post_terms(get_the_ID(), 'tech', ['orderby' => 'name', 'order' => 'ASC', 'fields' => 'all' ]);
 
@@ -147,8 +151,38 @@ function fGetTechnologies() {
     return $aTechnologies = fSortTechnologies($aTerms);
 }
 
+// Get an image from ACF plugin
 function fGetACFImage($sImgField, $sImgSize = 'medium_large') {
     $sImgID = get_field($sImgField);
 
 	return $oImg = wp_get_attachment_image($sImgID, $sImgSize);
+}
+
+// Get posts for index page
+function fGetPinnedPosts() {
+    $aPinnedPosts = get_posts(['posts_per_page' => INDEX_PROJECTS_OVERVIEWS_NUM, 'category_name' => 'epingle', 'post_type' => 'projets']);
+    $aPosts = $aPinnedPosts;
+
+    // if we not enought pinned posts add other posts wich havn't class epingle
+    if (count($aPinnedPosts) < INDEX_PROJECTS_OVERVIEWS_NUM ) {
+        $iNumberMissingPosts = INDEX_PROJECTS_OVERVIEWS_NUM - count($aPinnedPosts);
+        $aAllPosts = get_posts(['post_type' => 'projets']);
+        foreach ($aAllPosts as $allPostsKey => $allPostsValue) {
+            foreach ($aPinnedPosts as $pinnedPostsValue) {
+                if ($allPostsValue->ID === $pinnedPostsValue->ID) {
+                    unset($aAllPosts[$allPostsKey]);
+                }
+            }
+        }
+        $aOtherPosts = array_slice($aAllPosts, 0, $iNumberMissingPosts);
+        $aPosts = array_merge($aPinnedPosts, $aOtherPosts);
+    }
+
+    // get ids of posts
+    foreach ($aPosts as $key => $value) {
+        $aPostsID[$key] = $value->ID;
+    }
+
+    // return posts by selected ids
+    return new WP_Query(['posts_per_page' => INDEX_PROJECTS_OVERVIEWS_NUM, 'post__in' => $aPostsID, 'post_type' => 'projets']);
 }

@@ -18,8 +18,8 @@ get_header();
         <section class="page__section index__content index__projects">
             <h3 class="index__title" role="heading" aria-level="2">Quelques projets</h3>
             <div class="index__container">
-                <?php $oPost = new WP_Query(['posts_per_page' => 2, 'category_name' => 'epingle', 'post_type' => 'projets']); ?>
-                <?php if($oPost->have_posts()): while($oPost->have_posts()): $oPost->the_post(); ?>
+                <?php $aPost = fGetPinnedPosts(); ?>
+                <?php if($aPost->have_posts()): while($aPost->have_posts()): $aPost->the_post(); ?>
                     <article class="index__article index__project">
                         <a class="project__link" href="<?php the_permalink(); ?>" title="En savoir plus sur le projet">
                             <h4 class="index__sub-title project__title"><?php the_title(); ?></h4>
