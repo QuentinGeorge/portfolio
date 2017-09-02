@@ -108,7 +108,14 @@ gulp.task( "img", function() {
         .pipe( gulp.dest( oImg.out ) );
 } );
 
-// HTML tasks
+// PHP tasks (copy all php files. If php files has no html inside html task will not copy it because it looks like empty)
+gulp.task( "php", function() {
+    return gulp
+        .src( oHTML.in )
+        .pipe( gulp.dest( oHTML.out ) );
+} );
+
+// HTML tasks (try to minify html in php files)
 gulp.task( "html", function() {
     return gulp
         .src( oHTML.in )
@@ -168,12 +175,13 @@ gulp.task( "browser-sync", function() {
 gulp.task( "watch", function() {
     gulp.watch( oCopy.in, [ "copy" ] ).on( "change", browserSync.reload );
     gulp.watch( oImg.in, [ "img" ] ).on( "change", browserSync.reload );
+    gulp.watch( oHTML.in, [ "php" ] ).on( "change", browserSync.reload );
     gulp.watch( oHTML.in, [ "html" ] ).on( "change", browserSync.reload );
     gulp.watch( oStyles.in, [ "styles" ] ).on( "change", browserSync.reload );
     gulp.watch( oScripts.in, [ "lint", "scripts" ] ).on( "change", browserSync.reload );
 } );
 
 // Create command-line tasks
-gulp.task( "default", [ "copy", "img", "html", "styles", "lint", "scripts" ] );
+gulp.task( "default", [ "copy", "img", "php", "html", "styles", "lint", "scripts" ] );
 
 gulp.task( "work", [ "default", "watch", "browser-sync" ] );
