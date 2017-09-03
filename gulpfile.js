@@ -183,7 +183,7 @@ gulp.task( "browser-sync", function() {
 gulp.task( "watch", function() {
     gulp.watch( oCopy.in, [ "copy" ] ).on( "change", browserSync.reload );
     gulp.watch( oImg.in, [ "img" ] ).on( "change", browserSync.reload );
-    gulp.watch( oHTML.in, [ "php" ] ).on( "change", browserSync.reload );
+    gulp.watch( oPHP.in, [ "php" ] ).on( "change", browserSync.reload );
     // gulp.watch( oHTML.in, [ "html" ] ).on( "change", browserSync.reload );
     gulp.watch( oStyles.in, [ "styles" ] ).on( "change", browserSync.reload );
     gulp.watch( oScripts.in, [ "lint", "scripts" ] ).on( "change", browserSync.reload );
