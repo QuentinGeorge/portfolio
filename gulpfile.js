@@ -40,8 +40,15 @@ var sSrc = "src/",
         in: sSrc + "img_to_optim/**/*",
         out: sDest + "assets/img/"
     },
-    oHTML = {
+    oPHP = {
         in: sSrc + "**/*.php",
+        out: sDest,
+        plumberOpts: {
+            errorHandler: gNotify.onError( fPlumberError( sTaskError = "PHP" ) )
+        }
+    },
+    oHTML = {
+        in: sSrc + "**/*.html",
         out: sDest,
         minOpts: {
             collapseWhitespace: true,
@@ -108,22 +115,23 @@ gulp.task( "img", function() {
         .pipe( gulp.dest( oImg.out ) );
 } );
 
-// PHP tasks (copy all php files. If php files has no html inside html task will not copy it because it looks like empty)
+// PHP tasks
 gulp.task( "php", function() {
     return gulp
-        .src( oHTML.in )
-        .pipe( gulp.dest( oHTML.out ) );
+        .src( oPHP.in )
+        .pipe( gPlumber( oPHP.plumberOpts ) ) // Don't stop watch task if an error occured
+        .pipe( gulp.dest( oPHP.out ) );
 } );
 
-// HTML tasks (try to minify html in php files)
-gulp.task( "html", function() {
-    return gulp
-        .src( oHTML.in )
-        .pipe( gPlumber( oHTML.plumberOpts ) ) // Don't stop watch task if an error occured
-        // Minify HTML
-        .pipe( gHTMLMin( oHTML.minOpts ) )
-        .pipe( gulp.dest( oHTML.out ) );
-} );
+// HTML tasks
+// gulp.task( "html", function() {
+//     return gulp
+//         .src( oHTML.in )
+//         .pipe( gPlumber( oHTML.plumberOpts ) ) // Don't stop watch task if an error occured
+//         // Minify HTML
+//         .pipe( gHTMLMin( oHTML.minOpts ) )
+//         .pipe( gulp.dest( oHTML.out ) );
+// } );
 
 // Styles tasks
 gulp.task( "styles", function() {
@@ -176,12 +184,12 @@ gulp.task( "watch", function() {
     gulp.watch( oCopy.in, [ "copy" ] ).on( "change", browserSync.reload );
     gulp.watch( oImg.in, [ "img" ] ).on( "change", browserSync.reload );
     gulp.watch( oHTML.in, [ "php" ] ).on( "change", browserSync.reload );
-    gulp.watch( oHTML.in, [ "html" ] ).on( "change", browserSync.reload );
+    // gulp.watch( oHTML.in, [ "html" ] ).on( "change", browserSync.reload );
     gulp.watch( oStyles.in, [ "styles" ] ).on( "change", browserSync.reload );
     gulp.watch( oScripts.in, [ "lint", "scripts" ] ).on( "change", browserSync.reload );
 } );
 
 // Create command-line tasks
-gulp.task( "default", [ "copy", "img", "php", "html", "styles", "lint", "scripts" ] );
+gulp.task( "default", [ "copy", "img", "php", "styles", "lint", "scripts" ] );
 
 gulp.task( "work", [ "default", "watch", "browser-sync" ] );
