@@ -4,13 +4,13 @@ add_action('init', 'fRegisterTypes');
 add_filter('wp_title', 'fCustomWPTitle');
 add_theme_support('post-thumbnails');
 
+// Define constants
+define('INDEX_PROJECTS_OVERVIEWS_NUM', 2);
+
 // Define folders path
 define('STYLES', '/css/');
 define('IMG', '/assets/img/');
 define('DATA', '/assets/data/');
-
-// Define constants
-define('INDEX_PROJECTS_OVERVIEWS_NUM', 2);
 
 // Register custom post-types
 function fRegisterTypes() {
@@ -163,9 +163,10 @@ function fGetPinnedPosts() {
     $aPinnedPosts = get_posts(['posts_per_page' => INDEX_PROJECTS_OVERVIEWS_NUM, 'category_name' => 'epingle', 'post_type' => 'projets']);
     $aPosts = $aPinnedPosts;
 
-    // if we not enought pinned posts add other posts wich havn't class epingle
+    // if we havn't enought pinned posts add other posts wich havn't class epingle
     if (count($aPinnedPosts) < INDEX_PROJECTS_OVERVIEWS_NUM ) {
         $iNumberMissingPosts = INDEX_PROJECTS_OVERVIEWS_NUM - count($aPinnedPosts);
+        // get all posts and remove duplicated values wich are already in $aPinnedPosts
         $aAllPosts = get_posts(['post_type' => 'projets']);
         foreach ($aAllPosts as $allPostsKey => $allPostsValue) {
             foreach ($aPinnedPosts as $pinnedPostsValue) {
@@ -174,7 +175,9 @@ function fGetPinnedPosts() {
                 }
             }
         }
+        // keep only the exact number of missing posts
         $aOtherPosts = array_slice($aAllPosts, 0, $iNumberMissingPosts);
+        // merge the 2 arrays
         $aPosts = array_merge($aPinnedPosts, $aOtherPosts);
     }
 

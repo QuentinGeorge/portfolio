@@ -30,29 +30,13 @@ const fStickyEltsHandler = function() {
     }
 };
 
-const fBurgerMenuShowItems = function() {
-    $( ".header .navigation__item-container" ).removeClass( "hide" );
-    $( ".header .navigation--burger" ).siblings().show();
-};
-
-const fBurgerMenuHideItems = function() {
-    $( ".header .navigation__item-container" ).addClass( "hide" );
-    $( ".header .navigation--burger" ).siblings().hide();
-};
-
 const fBurgerMenuHandler = function() {
-    if ( $( ".header .navigation__item-container" ).hasClass( "hide" ) ) {
-        fBurgerMenuShowItems();
-    } else if ( $( ".header .navigation--burger" ).css( "display" ) !== "none" ) {
-        fBurgerMenuHideItems();
-    }
-};
+    let $oItemContainer = $( ".header .navigation__item-container" );
 
-const fBurgerMenuHandlerOnResize = function() {
-    if ( $( ".header .navigation__item-container" ).hasClass( "hide" ) && $( ".header .navigation--burger" ).css( "display" ) == "none" ) {
-        fBurgerMenuShowItems();
-    } else if ( !$( ".header .navigation__item-container" ).hasClass( "hide" ) && $( ".header .navigation--burger" ).css( "display" ) !== "none" ) {
-        fBurgerMenuHideItems();
+    if ( $oItemContainer.hasClass( "content-hidden" ) ) {
+        $oItemContainer.removeClass( "content-hidden" );
+    } else {
+        $oItemContainer.addClass( "content-hidden" );
     }
 };
 
@@ -61,8 +45,6 @@ $( function() {
     // If menu loaded
     $( ".header .navigation__container .navigation__item" ).ready( function() {
         fActiveEltsHandler();
-        // if mobile, hide menu burger on load
-        fBurgerMenuHandler();
     } );
 
     /* Sticky elements */
@@ -75,9 +57,5 @@ $( function() {
         oEvent.preventDefault();
 
         fBurgerMenuHandler();
-    } );
-    // if resize window further than mobile size .navigation--burger is on display: none so we have to show items
-    $( window ).resize( function() {
-        fBurgerMenuHandlerOnResize();
     } );
 } );

@@ -52,6 +52,10 @@
                         </li>
                         <?php endfor; ?>
                     </div>
+                    <!-- Script inline to have burger menu open when js is not supported but close it if supported. Do it inline avoid show hide effect on page loading -->
+                    <script type="text/javascript">
+                        document.querySelector( ".navigation__item-container" ).classList.add( "content-hidden" );
+                    </script>
                 </ul>
             </nav>
         </header>
