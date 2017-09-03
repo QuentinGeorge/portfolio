@@ -1,9 +1,16 @@
 // Footer specific styles
 
-footer .navigation {
-    padding: 1rem;
+.foot {
+    min-width: $sMainMinSize;
+    position: absolute;
+    left: 0;
+    right: 0;
     background-color: $cFooterBackground;
     color: $cMainBackground;
+}
+
+footer .navigation {
+    padding: 1rem;
     text-align: center;
     &__container {
         max-width: $sMainMaxSize;
@@ -11,15 +18,16 @@ footer .navigation {
     }
     &__item {
         display: block;
-        margin: 1rem;
+        margin: 2rem;
     }
     &__link {
         color: $cMainBackground;
     }
 }
 
-@media screen and (min-width: $sMobileSize) {
+@media screen and (min-width: $sFooterMobileSize) {
     footer .navigation {
+        padding: 1rem 2rem;
         text-align: left;
         &__container {
             display: flex;

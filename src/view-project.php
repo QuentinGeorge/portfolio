@@ -16,9 +16,11 @@ get_header();
         <?php include(locate_template('part-content.php')); ?>
         <section class="project__content page__section project__intro">
             <h3 class="project__sub-title hidden" role="heading" aria-level="3">Introduction du projet</h3>
-            <figure class="project__figure">
-                <?= fGetACFImage('image_dintroduction'); ?>
-            </figure>
+            <?php if (get_field('image_dintroduction') !== false): ?>
+                <figure class="project__figure">
+                    <?= fGetACFImage('image_dintroduction'); ?>
+                </figure>
+            <?php endif; ?>
             <p class="project__text"><?php the_field('introduction_du_projet'); ?></p>
             <ul class="project__container">
                 <li class="link__container">
@@ -29,16 +31,18 @@ get_header();
                 </li>
             </ul>
         </section>
-        <section class="project__content page__section">
+        <section class="project__content page__section project__constraints">
             <h3 class="project__sub-title" role="heading" aria-level="3">Contraintes</h3>
             <p class="project__text"><?php the_field('contraintes'); ?></p>
-            <figure class="project__figure">
-                <?= fGetACFImage('image_de_contrainte'); ?>
-            </figure>
+            <?php if (get_field('image_de_contrainte') !== false): ?>
+                <figure class="project__figure">
+                    <?= fGetACFImage('image_de_contrainte'); ?>
+                </figure>
+            <?php endif; ?>
         </section>
         <?php $aTechnologies = fGetTechnologies(); ?>
         <?php if (!empty($aTechnologies)): ?>
-            <section class="project__content page__section">
+            <section class="project__content page__section project__tech">
                 <svg class="hidden" aria-hidden="true" version="1.1" width="0" height="0">
                     <defs>
                         <g id="tech">

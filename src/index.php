@@ -23,9 +23,11 @@ get_header();
                     <article class="index__article index__project">
                         <a class="project__link" href="<?php the_permalink(); ?>" title="En savoir plus sur le projet">
                             <h4 class="index__sub-title project__title"><?php the_title(); ?></h4>
-                            <figure class="project__figure">
-                                <?php the_post_thumbnail('large'); ?>
-                            </figure>
+                            <?php if (has_post_thumbnail() === true): ?>
+                                <figure class="project__figure">
+                                    <?php the_post_thumbnail('large'); ?>
+                                </figure>
+                            <?php endif; ?>
                         </a>
                     </article>
                 <?php endwhile; else: ?>

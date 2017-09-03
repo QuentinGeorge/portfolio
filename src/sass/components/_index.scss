@@ -9,14 +9,15 @@
     }
     &__article {
         display: inline-block;
-        max-width: 264px;
+        min-width: $sImgMinSize;
+        width: 100%;
     }
 }
 
 .index__project .project__link {
     display: block;
-    min-width: 256px;
-    margin-top: 1.6rem;
+    max-width: $sImgMaxSize;
+    margin-top: $sTitleAndContentAddGap;
     padding-top: 1rem;
     color: $cMainBackground;
     background-color: $cMainItemBackground;
@@ -29,6 +30,10 @@
     &:focus {
         background-color: $cMainItemBackgroundHover;
     }
+}
+
+.index__project:first-child {
+    margin-bottom: 1.5rem;
 }
 
 .index__project .project__link h4 {
@@ -44,33 +49,14 @@
 }
 
 .index__article img {
-    max-width: 256px;
+    max-width: 100%;
     height: auto;
 }
 
 @media screen and (min-width: $sMobileSize) {
     .index {
         &__article {
-            display: inline-block;
-            max-width: 308px;
-            margin: 0 4rem;
-        }
-    }
-
-    .index__article img {
-        max-width: 300px;
-        height: auto;
-    }
-}
-
-@media screen and (min-width: $sIndexMediumSize) {
-    .index {
-        &__article {
-            display: inline-block;
-            margin: 0;
-            &:first-child {
-                margin-right: 4rem;
-            }
+            margin: 0 2rem;
         }
     }
 }
@@ -78,11 +64,11 @@
 @media screen and (min-width: $sIndexBigSize) {
     .index {
         &__article {
-            max-width: 408px;
+            width: 40%;
         }
     }
 
-    .index__article img {
-        max-width: 400px;
+    .index__project:first-child {
+        margin-bottom: 0rem;
     }
 }

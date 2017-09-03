@@ -1,6 +1,8 @@
 // about page specific styles
 
 .about header {
+    max-width: $sImgMaxSize;
+    margin: $sTitleAndContentAddGap auto;
     font-size: 1rem;
 }
 
@@ -11,6 +13,7 @@
 .about .link {
     &__container {
         display: block;
+        max-width: $sImgMaxSize;
     }
     &--button {
         margin-top: 2rem;
@@ -20,9 +23,9 @@
     margin: 1rem 0;
 }
 
-@media screen and (min-width: $sAboutMobileSize) {
-    .about .link__container:first-child {
-        margin-right: 4rem;
+@media screen and (min-width: $sMobileSize) {
+    .about .link__container {
+        margin: 0 2rem;
     }
 
     .about__container {

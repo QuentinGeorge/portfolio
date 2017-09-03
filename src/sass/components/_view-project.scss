@@ -1,8 +1,9 @@
 // view-project page specific styles
 
 .view-project img {
-    max-width: 256px;
+    max-width: 100%;
     height: auto;
+    margin: ($sTitleAndContentAddGap + .8rem) 0;
     border-radius: $sFigureBorderRadius;
 }
 
@@ -11,13 +12,27 @@
         margin-top: 0;
     }
     &__figure {
-        display: inline-block;
-        margin: 1rem 0;
+        display: block;
+        max-width: $sImgMaxSize;
+        min-width: $sImgMinSize;
+        margin: 0 auto;
+    }
+    &__text {
+        max-width: $sImgMaxSize;
+        margin: $sTitleAndContentAddGap auto;
+    }
+    &__container {
+        max-width: $sImgMaxSize;
+        margin: $sTitleAndContentAddGap auto;
     }
 }
 
-.view-project .project__intro figure {
-    margin-top: 0;
+.view-project .project__intro p {
+    padding-bottom: .8rem;
+}
+
+.view-project .project__constraints p {
+    padding-top: .8rem;
 }
 
 .view-project .project__container {
@@ -27,9 +42,12 @@
 .view-project .link {
     &__container {
         display: block;
+        &:first-child {
+            margin-bottom: 2rem;
+        }
     }
     &--button {
-        margin-top: 2rem;
+        margin-top: 0;
     }
 }
 
@@ -38,11 +56,12 @@
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
-    margin: 0 3rem;
+    margin: $sTitleAndContentAddGap auto 0 auto;
+    padding-top: .8rem;
     text-align: left;
     font-size: 1.181rem;
     &__item {
-        margin: .75rem 0;
+        margin: .75rem 3rem;
     }
     &__icon {
         color: $cMainItemBackground;
@@ -53,11 +72,16 @@
 
 .view-project .sub-tech {
     margin: 0;
+    padding-top: 0;
+    &__item {
+        margin: .75rem 0;
+    }
 }
 
 @media screen and (min-width: $sMobileSize) {
-    .view-project .link__container:first-child {
-        margin-right: 4rem;
+    .view-project .link__container {
+        margin-left: 2rem;
+        margin-right: 2rem;
     }
 
     .view-project .project__container {
@@ -65,21 +89,5 @@
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
-    }
-
-    .view-project img {
-        max-width: 410px;
-    }
-}
-
-@media screen and (min-width: $sProjectsMediumSize) {
-    .view-project img {
-        max-width: 590px;
-    }
-}
-
-@media screen and (min-width: $sProjectsBigSize) {
-    .view-project img {
-        max-width: 100%;
     }
 }

@@ -72,7 +72,7 @@ header .navigation {
                 content: "";
                 position: absolute;
                 top: 2.3rem;
-                right: 23%;
+                right: 2.55rem;
                 border: 12px solid transparent;
                 border-bottom-color: $cMainNavBorder;
             }
@@ -106,6 +106,7 @@ header .navigation__item .navigation__home-link {
 }
 
 header .navigation__item-container .navigation__item a {
+    min-width: 160px;
     padding: 1rem 2.5rem;
     background-color: $cMainNavBorder;
     border-left: 2px solid $cMainNavBorder;
@@ -120,9 +121,14 @@ header .navigation__item-container .navigation__item a {
     }
 }
 
+header .navigation__item-container .navigation__item {
+    border-top: 2px solid $cBurgerMenuItemBorder;
+}
+
 header .navigation__item:nth-child(2) {
     padding-top: 5px;
     background-color: $cMainNavBorder;
+    border: 0;
 }
 
 // burger show/hide styles
@@ -155,6 +161,10 @@ header .content-hidden .navigation__item {
     $item-containerDisplay: inline-block;
 
     header .navigation {
+        padding: 0 4rem;
+        &__container {
+            height: auto;
+        }
         &__item {
             display: inline-block;
             position: relative;
@@ -201,9 +211,14 @@ header .content-hidden .navigation__item {
     }
 
     header .navigation__item-container .navigation__item a {
+        min-width: auto;
         padding: 1rem;
         background-color: $cMainItemBackground;
         border: 0;
+    }
+
+    header .navigation__item-container .navigation__item {
+        border-top: 0;
     }
 
     header .navigation__item:nth-child(2) {
