@@ -23,8 +23,8 @@
     border: 4px solid $cMainItemBackground;
     border-radius: $sFigureBorderRadius;
     &:hover {
-        text-decoration: none;
         background-color: $cMainItemBackgroundHover;
+        text-decoration: none;
     }
     &:focus {
         background-color: $cMainItemBackgroundHover;

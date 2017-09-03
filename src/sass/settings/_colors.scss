@@ -3,8 +3,14 @@
 // Backgrounds colors
 $cMainBackground: #FFF;
 $cMainItemBackground: #0076CC;
-$cMainItemBackgroundHover: lighten($cMainItemBackground, 5%);
+$cMainItemBackgroundHover: darken($cMainItemBackground, 8%);
 $cFooterBackground: darken($cMainItemBackground, 15%);
+
+// Backgrounds gradients
+$gMainMenuItemBackgroundGrad: linear-gradient(to bottom, lighten($cMainItemBackground, 5%), $cMainItemBackground, $cMainItemBackgroundHover);
+$gMainMenuItemBackgroundHoverGrad: linear-gradient(to bottom, $cMainItemBackground, $cMainItemBackgroundHover);
+$gMainItemBackgroundGrad: linear-gradient(to bottom right, lighten($cMainItemBackground, 5%), $cMainItemBackground, $cMainItemBackgroundHover);
+$gMainItemBackgroundHoverGrad: linear-gradient(to bottom right, $cMainItemBackground, $cMainItemBackgroundHover, $cFooterBackground);
 
 // Texts colors
 $cLaborText: #323232;

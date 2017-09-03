@@ -29,14 +29,17 @@
     font-weight: 600;
     color: $cMainBackground;
     background-color: $cMainItemBackground;
+    background: $gMainMenuItemBackgroundGrad;
     border: none;
     border-radius: 32px;
     &:hover {
         text-decoration: none;
         background-color: $cMainItemBackgroundHover;
+        background: $gMainMenuItemBackgroundHoverGrad;
     }
     &:focus {
         background-color: $cMainItemBackgroundHover;
+        background: $gMainMenuItemBackgroundHoverGrad;
     }
 }
 

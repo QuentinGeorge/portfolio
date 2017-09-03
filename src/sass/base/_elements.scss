@@ -40,14 +40,17 @@ abbr {
         padding: 1.2rem;
         color: $cMainBackground;
         background-color: $cMainItemBackground;
+        background: $gMainItemBackgroundGrad;
         font-weight: 600;
         border-radius: 6px 32px;
         &:hover {
             text-decoration: none;
             background-color: $cMainItemBackgroundHover;
+            background: $gMainItemBackgroundHoverGrad;
         }
         &:focus {
             background-color: $cMainItemBackgroundHover;
+            background: $gMainItemBackgroundHoverGrad;
         }
     }
 }
