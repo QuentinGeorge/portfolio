@@ -9,7 +9,7 @@
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width"/>
         <title><?php wp_title(''); ?></title>
-        <!-- <link rel="icon" type="image/png" href="<?php fThemeAsset(IMG, 'favicon.png'); ?>"/> -->
+        <link rel="icon" type="image/png" href="<?php fThemeAsset(IMG, 'favicon.png'); ?>"/>
         <link rel="stylesheet" href="<?php fThemeAsset(STYLES, 'styles.min.css'); ?>"/>
     </head>
     <body>
