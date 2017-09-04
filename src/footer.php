@@ -8,7 +8,7 @@
                         <a class="navigation__link" href="<?= $aFooterNav[0]->url; ?>" title="Retour à la page d'accueil" rel="home"><?= $aFooterNav[0]->label; ?></a>
                     </li>
                     <li class="navigation__item">
-                        <a class="navigation__link" href="<?= $aFooterNav[1]->url; ?>" title="Mon profil GitHub"><?= $aFooterNav[1]->label; ?></a>
+                        <a class="navigation__link" href="<?= $aFooterNav[1]->url; ?>" title="Mon profil GitHub" rel="external"><?= $aFooterNav[1]->label; ?></a>
                     </li>
                     <li class="navigation__item">
                         <a class="navigation__link" href="<?= $aFooterNav[2]->url; ?>"><?= $aFooterNav[2]->label; ?></a>

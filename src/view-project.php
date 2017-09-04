@@ -11,23 +11,23 @@ $sAlternativePageTitle = 'Projet';
 
 get_header();
 
-?>
+?>  <!-- Don't forget to set model page => Page du projet for a new project in wp-admin -->
     <section class="page__content view-project">
         <?php include(locate_template('part-content.php')); ?>
         <section class="project__content page__section project__intro">
             <h3 class="project__sub-title hidden" role="heading" aria-level="3">Introduction du projet</h3>
-            <?php if (get_field('image_dintroduction') !== false): ?>
+            <?php if (has_post_thumbnail() === true): ?>
                 <figure class="project__figure">
-                    <?= fGetACFImage('image_dintroduction'); ?>
+                    <?php the_post_thumbnail('medium_large'); ?>
                 </figure>
             <?php endif; ?>
             <p class="project__text"><?php the_field('introduction_du_projet'); ?></p>
             <ul class="project__container">
                 <li class="link__container">
-                    <a class="link--button" href="<?php the_field('lien_vers_le_projet'); ?>">Voir le projet</a>
+                    <a class="link--button" href="<?php the_field('lien_vers_le_projet'); ?>" rel="external">Voir le projet</a>
                 </li>
                 <li class="link__container">
-                    <a class="link--button" href="<?php the_field('lien_vers_github'); ?>" hreflang="en">Voir le code sur GitHub</a>
+                    <a class="link--button" href="<?php the_field('lien_vers_github'); ?>" hreflang="en" rel="external code-repository">Voir le code sur GitHub</a>
                 </li>
             </ul>
         </section>

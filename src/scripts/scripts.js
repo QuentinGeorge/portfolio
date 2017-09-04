@@ -40,11 +40,31 @@ const fBurgerMenuHandler = function() {
     }
 };
 
+const fBurgerMenuAriaHandler = function() {
+    let $oNavBurgerLink = $( ".header .navigation__item-container .navigation--burger__link" ),
+        $oNavBurgerItem = $( ".header .navigation--burger" );
+
+    // If we are in mobile, the burger menu should be aria-hidden true. And false if we are in desktop.
+    if ( $oNavBurgerItem.css( "display" ) !== "none" ) {
+        $oNavBurgerItem.attr( "aria-hidden", "false" );
+    } else {
+        $oNavBurgerItem.attr( "aria-hidden", "true" );
+    }
+    // Burger menu is not expanded if we have content hidden and if we are in mobile. If we have not content hidden or if we are in desktop it's expanded.
+    if ( $( ".header .navigation__item-container" ).hasClass( "content-hidden" ) && $oNavBurgerItem.css( "display" ) !== "none" ) {
+        $oNavBurgerLink.attr( "aria-expanded", "false" );
+    } else {
+        $oNavBurgerLink.attr( "aria-expanded", "true" );
+    }
+};
+
 $( function() {
     /* Manage active class */
     // If menu loaded
     $( ".header .navigation__container .navigation__item" ).ready( function() {
         fActiveEltsHandler();
+        // Manage aria attributes on load
+        fBurgerMenuAriaHandler();
     } );
 
     /* Sticky elements */
@@ -57,5 +77,10 @@ $( function() {
         oEvent.preventDefault();
 
         fBurgerMenuHandler();
+        fBurgerMenuAriaHandler();
+    } );
+    // Manage aria attributes on resize if we are in desktop version menu burger doesn't exist so it will be aria popup true and burger should be aria-hidden true
+    $( window ).resize( function() {
+        fBurgerMenuAriaHandler();
     } );
 } );
