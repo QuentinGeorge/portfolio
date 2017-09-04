@@ -1,6 +1,6 @@
 // index page specific styles
 
-.index .content__header p {
+.index .content__header p:nth-child(2) {
     max-width: $sImgMaxSize;
     margin: $sTitleAndContentAddGap auto;
 }
@@ -87,7 +87,7 @@
 
     .index .content__header p:nth-child(2) {
         float: right;
-        margin-top: -200px;
+        margin-top: -10rem;
     }
 }
 

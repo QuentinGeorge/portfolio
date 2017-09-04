@@ -6,6 +6,16 @@
     font-size: 1rem;
 }
 
+.about .content__header p:first-child {
+    padding: .8rem 0;
+}
+
+.about .content__header img {
+    max-width: 100%;
+    height: auto;
+    border-radius: $sFigureBorderRadius;
+}
+
 .about__container {
     display: block;
 }
