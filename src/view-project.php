@@ -11,7 +11,8 @@ $sAlternativePageTitle = 'Projet';
 
 get_header();
 
-?>  <!-- Don't forget to set model page => Page du projet for a new project in wp-admin -->
+?>
+<!-- Don't forget to set model page => Page du projet for a new project in wp-admin -->
     <section class="page__content view-project">
         <?php include(locate_template('part-content.php')); ?>
         <section class="project__content page__section project__intro">
