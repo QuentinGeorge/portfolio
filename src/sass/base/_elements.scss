@@ -85,10 +85,11 @@ h2:before, h3:before {
         position: relative;
         top: 0;
         right: .5rem;
+        margin-left: 3rem;
     }
 
     h2:before, h3:before {
         display: inline-block;
-        margin: 0 .5rem 0 0;
+        margin: 0 .5rem 0 -3rem;
     }
 }

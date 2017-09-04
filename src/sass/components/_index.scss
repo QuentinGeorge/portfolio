@@ -1,5 +1,16 @@
 // index page specific styles
 
+.index .content__header p {
+    max-width: $sImgMaxSize;
+    margin: $sTitleAndContentAddGap auto;
+}
+
+.index .content__header img {
+    max-width: 100%;
+    height: auto;
+    border-radius: $sFigureBorderRadius;
+}
+
 .index {
     &__container  {
         display: flex;
@@ -58,6 +69,25 @@
         &__article {
             margin: 0 2rem;
         }
+    }
+}
+
+@media screen and (min-width: $sIndexMediumSize) {
+    .index .content__header {
+        @include clearFix;
+    }
+
+    .index h2 {
+        padding-right: 300px;
+    }
+
+    .index .content__header p:first-child {
+        padding-right: 360px;
+    }
+
+    .index .content__header p:nth-child(2) {
+        float: right;
+        margin-top: -200px;
     }
 }
 
