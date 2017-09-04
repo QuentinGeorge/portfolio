@@ -21,7 +21,7 @@ get_header();
                     <a class="link--button" href="<?php fThemeAsset(DATA, 'CV-Quentin-GEORGE.pdf'); ?>" rel="external">Télécharger une version PDF</a>
                 </li>
                 <li class="link__container">
-                    <a class="link--button" href="http://hepl01.cblue.be/~user27/dw/cv/" hreflang="en" title="En anglais" rel="external">Voir mon projet CV en ligne</a>
+                    <a class="link--button" href="http://www.quentin-george.com/cv/" hreflang="en" title="En anglais" rel="external">Voir mon projet CV en ligne</a>
                 </li>
             </ul>
         </nav>
