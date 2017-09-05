@@ -35,6 +35,15 @@ const fActiveEltsHandler = function() {
     } );
 };
 
+const fStyleContactErrors = function() {
+    // The top message hasn't a specific class which represent the type of message in his content but the bottom message has it. So check if bottom message has validation class & add this class to top message.
+    if ( $( ".contact .wpcf7-response-output" ).hasClass( "wpcf7-validation-errors" ) ) {
+        $( ".contact .screen-reader-response" ).addClass( "wpcf7-validation-errors" );
+    } else if ( $( ".contact .wpcf7-response-output" ).hasClass( "wpcf7-mail-sent-ok" ) ) {
+        $( ".contact .screen-reader-response" ).addClass( "wpcf7-mail-sent-ok" );
+    }
+};
+
 const fStickyEltsHandler = function() {
     let $iMainMenuTopPosition = $( ".header" ).offset().top,
         $oStickyElt = $( ".header .navigation" );
@@ -81,6 +90,12 @@ $( function() {
         fActiveEltsHandler();
         // Manage aria attributes on load
         fBurgerMenuAriaHandler();
+    } );
+
+    /* Style contact form errors */
+    // if form is loaded
+    $( ".contact .contact__form" ).ready( function() {
+        fStyleContactErrors();
     } );
 
     /* Sticky elements */

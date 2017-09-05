@@ -44,12 +44,11 @@
 }
 
 // contact form styles
-.screen-reader-response, .wpcf7-response-output {
+.contact__form .screen-reader-response, .contact__form .wpcf7-response-output {
     margin-top: .8rem;
-    color: $cContactErrors;
 }
 
-.screen-reader-response ul {
+.contact__form .screen-reader-response ul {
     display: none;
 }
 
@@ -60,6 +59,14 @@
 .contact__form .wpcf7-not-valid-tip {
     display: inline-block;
     color: $cContactErrors;
+}
+
+.contact__form .wpcf7-validation-errors {
+    color: $cContactErrors;
+}
+
+.contact__form .wpcf7-mail-sent-ok {
+    color: $cContactSended;
 }
 
 @media screen and (min-width: $sMobileSize) {
