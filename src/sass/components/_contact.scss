@@ -43,8 +43,31 @@
     }
 }
 
+// contact form styles
+.screen-reader-response, .wpcf7-response-output {
+    margin-top: .8rem;
+    color: $cContactErrors;
+}
+
+.screen-reader-response ul {
+    display: none;
+}
+
+.contact__form .wpcf7-not-valid {
+    border: 1px solid $cContactErrors;
+}
+
+.contact__form .wpcf7-not-valid-tip {
+    display: inline-block;
+    color: $cContactErrors;
+}
+
 @media screen and (min-width: $sMobileSize) {
     .contact header, .contact legend {
         line-height: inherit;
+    }
+
+    .contact input, .contact textarea {
+        margin-right: .5rem;
     }
 }
