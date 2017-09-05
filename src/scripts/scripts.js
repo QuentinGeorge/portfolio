@@ -3,19 +3,35 @@
 const fActiveEltsHandler = function() {
     let $sPageURL = $( location ).attr( "href" ),
         $aNavigationItems = $( ".header .navigation__container .navigation__item" ),
-        $oDefaultMenuItem = $( ".header .navigation__item-container li:nth-child(2)" );
+        $oDefaultMenuItem = $( ".header .navigation__first-item" ),
+        $aHREFLinkParts = [],
+        $iHREFLinkPagePart = 0;
 
+    // remove all active classes
     $aNavigationItems.each( function() {
-        $( this ).removeClass( "active" ); // remove all active classes
+        $( this ).removeClass( "active" );
     } );
-    $oDefaultMenuItem.addClass( "active" ); // add active class on default item
-    $( ".header .navigation__link" ).each( function() {
-        // compare url with menu items href and put active class on the good item
-        if ( $sPageURL == $( this ).attr( "href" ) ) {
-            $oDefaultMenuItem.removeClass( "active" ); // all active class are removed but don't forget the default if it's anothe page
+    // add active class on default item (home)
+    $oDefaultMenuItem.addClass( "active" );
+    // for all item link which aren't home check if the url contains the page cibled by the link
+    $( ".header .navigation__item-container .navigation__link" ).each( function() {
+        // split the href of the link
+        $aHREFLinkParts = $( this ).attr( "href" ).split( "/" );
+        // set where is the page part in the array (here the last cell)
+        $iHREFLinkPagePart = $aHREFLinkParts.length - 1;
+        // if the last cell is empty (href last char is /) take the 2 cell from the end
+        if ( $aHREFLinkParts[$iHREFLinkPagePart] === "" ) {
+            $iHREFLinkPagePart--;
+        }
+        // if we found the page in the url manage active classes
+        if ( $sPageURL.indexOf($aHREFLinkParts[$iHREFLinkPagePart]) !== -1 ) {
+            // remove active from default (home)
+            $oDefaultMenuItem.removeClass( "active" );
+            // add active on the item wich contain the link with the matched href
             $( this ).parent().addClass( "active" );
             return;
         }
+        // projects are in /projets/"projectname"/ so the link projets is matched because url contains projets
     } );
 };
 
