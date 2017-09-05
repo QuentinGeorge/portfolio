@@ -5,11 +5,11 @@
     line-height: 1.2;
 }
 
-.contact legend {
+.contact__legend {
     line-height: 1.2;
 }
 
-.contact__form p {
+.contact .wpcf7 p {
     margin: 1.5rem 0;
 }
 
@@ -44,33 +44,33 @@
 }
 
 // contact form styles
-.contact__form .screen-reader-response, .contact__form .wpcf7-response-output {
+.contact .screen-reader-response, .contact .wpcf7-response-output {
     margin-top: .8rem;
 }
 
-.contact__form .screen-reader-response ul {
+.contact .screen-reader-response ul {
     display: none;
 }
 
-.contact__form .wpcf7-not-valid {
+.contact .wpcf7-not-valid {
     border: 1px solid $cContactErrors;
 }
 
-.contact__form .wpcf7-not-valid-tip {
+.contact .wpcf7-not-valid-tip {
     display: inline-block;
     color: $cContactErrors;
 }
 
-.contact__form .wpcf7-validation-errors {
+.contact .wpcf7-validation-errors {
     color: $cContactErrors;
 }
 
-.contact__form .wpcf7-mail-sent-ok {
+.contact .wpcf7-mail-sent-ok {
     color: $cContactSended;
 }
 
 @media screen and (min-width: $sMobileSize) {
-    .contact header, .contact legend {
+    .contact header, .contact__legend {
         line-height: inherit;
     }
 

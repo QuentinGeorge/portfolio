@@ -28,29 +28,31 @@
                             <span class="navigation__home-link__text"><?= $oMenuItems[0]->label; ?></span>
                         </a>
                     </li>
-                    <div class="navigation__item-container">
-                        <li aria-hidden="false" class="navigation--burger">
-                            <a class="navigation--burger__link" aria-haspopup="true" aria-expanded="true" href="#">
-                                <svg class="navigation--burger__img" aria-hidden="true" role="img" viewBox="0 0 124 124" width="25" height="25">
-                                    <path d="M112 6H12C5.4 6 0 11.4 0 18s5.4 12 12 12h100c6.6 0 12-5.4 12-12s-5.4-12-12-12zM112 50H12C5.4 50 0 55.4 0 62s5.4 12 12 12h100c6.6 0 12-5.4 12-12s-5.4-12-12-12zM112 94H12c-6.6 0-12 5.4-12 12s5.4 12 12 12h100c6.6 0 12-5.4 12-12s-5.4-12-12-12z"/>
-                                </svg>
-                            </a>
-                        </li>
-                        <?php for ($i=1; $i < $iMenuLength; $i++): ?>
-                        <li class="navigation__item">
-                            <a class="navigation__link" href="<?= $oMenuItems[$i]->url; ?>"><?= $oMenuItems[$i]->label; ?></a>
-                            <?php if($oMenuItems[$i]->children): ?>
-                            <ul class="navigation__sub">
-                                <?php foreach ($oMenuItems[$i]->children as $oSub): ?>
-                                <li class="navigation__item">
-                                    <a class="navigation__link" href="<?= $oSub->url; ?>"><?= $oSub->label; ?></a>
-                                </li>
-                                <?php endforeach; ?>
-                            </ul>
-                            <?php endif; ?>
-                        </li>
-                        <?php endfor; ?>
-                    </div>
+                    <li class="navigation__item-container">
+                        <ul>
+                            <li aria-hidden="false" class="navigation--burger">
+                                <a class="navigation--burger__link" aria-haspopup="true" aria-expanded="true" href="#">
+                                    <svg class="navigation--burger__img" aria-hidden="true" role="img" viewBox="0 0 124 124" width="25" height="25">
+                                        <path d="M112 6H12C5.4 6 0 11.4 0 18s5.4 12 12 12h100c6.6 0 12-5.4 12-12s-5.4-12-12-12zM112 50H12C5.4 50 0 55.4 0 62s5.4 12 12 12h100c6.6 0 12-5.4 12-12s-5.4-12-12-12zM112 94H12c-6.6 0-12 5.4-12 12s5.4 12 12 12h100c6.6 0 12-5.4 12-12s-5.4-12-12-12z"/>
+                                    </svg>
+                                </a>
+                            </li>
+                            <?php for ($i=1; $i < $iMenuLength; $i++): ?>
+                            <li class="navigation__item">
+                                <a class="navigation__link" href="<?= $oMenuItems[$i]->url; ?>"><?= $oMenuItems[$i]->label; ?></a>
+                                <?php if($oMenuItems[$i]->children): ?>
+                                <ul class="navigation__sub">
+                                    <?php foreach ($oMenuItems[$i]->children as $oSub): ?>
+                                    <li class="navigation__item">
+                                        <a class="navigation__link" href="<?= $oSub->url; ?>"><?= $oSub->label; ?></a>
+                                    </li>
+                                    <?php endforeach; ?>
+                                </ul>
+                                <?php endif; ?>
+                            </li>
+                            <?php endfor; ?>
+                        </ul>
+                    </li>
                     <!-- Script inline to have burger menu open when js is not supported but close it if supported. Do it inline avoid show hide effect on page loading -->
                     <script type="text/javascript">
                         document.querySelector( ".navigation__item-container" ).classList.add( "content-hidden" );
