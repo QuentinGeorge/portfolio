@@ -17,8 +17,30 @@
     min-width: 256px;
     max-width: 600px;
     width: 100%;
-    padding: .2rem .5rem .1rem .4rem;
     box-sizing: border-box;
+    padding: .6rem .8rem .5rem .8rem;
+    border-radius: 10px;
+    border: 1px solid $cContactInputBorder;
+    box-shadow: 0 1px 1px $cContactInputShadow inset;
+    background-color: $cContactInputBackground;
+    margin: .5rem 0 .2rem 0;
+}
+
+.contact label {
+    color: $cMainItemBackground;
+    font-weight: 600;
+    &:before {
+        content: "";
+        display: inline-block;
+        background-color: $cMainItemBackground;
+        width: 2rem;
+        height: 1.25rem;
+        border-radius: 1rem .3125rem;
+        position: relative;
+        top: .3125rem; // 5px => 1rem = 16px
+        left: 0;
+        margin-right: .5rem;
+    }
 }
 
 .contact input[type=submit] {
@@ -31,7 +53,7 @@
     background-color: $cMainItemBackground;
     background: $gMainMenuItemBackgroundGrad;
     border: none;
-    border-radius: 32px;
+    border-radius: 2rem;
     &:hover {
         text-decoration: none;
         background-color: $cMainItemBackgroundHover;
@@ -53,12 +75,13 @@
 }
 
 .contact .wpcf7-not-valid {
-    border: 1px solid $cContactErrors;
+    border-color: $cContactErrors;
 }
 
 .contact .wpcf7-not-valid-tip {
     display: inline-block;
     color: $cContactErrors;
+    font-weight: 400;
 }
 
 .contact .wpcf7-validation-errors {

@@ -5,6 +5,7 @@ $cMainBackground: #FFF;
 $cMainItemBackground: #0076CC;
 $cMainItemBackgroundHover: darken($cMainItemBackground, 8%);
 $cFooterBackground: darken($cMainItemBackground, 15%);
+$cContactInputBackground: lighten($cMainItemBackground, 55%);
 
 // Backgrounds gradients
 $gMainMenuItemBackgroundGrad: linear-gradient(to bottom, lighten($cMainItemBackground, 5%), $cMainItemBackground, $cMainItemBackgroundHover);
@@ -22,8 +23,10 @@ $cContactSended: #00872C;
 // Borders colors
 $cMainNavBorder: $cFooterBackground;
 $cBurgerMenuItemBorder: $cMainItemBackgroundHover;
+$cContactInputBorder: #AAA;
 
 // Shadows colors
 $cMainNavShadow: rgba(0, 0, 0, .2);
+$cContactInputShadow : $cMainNavShadow;
 
 // Others colors
