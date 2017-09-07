@@ -4,7 +4,7 @@
                 <ul class="navigation__container">
                     <?php $aFooterNav = fGetNavItems('footer'); ?>
                     <li class="navigation__item">
-                        <span class="navigation__item-text">&copy; Designed by </span>
+                        <span class="navigation__item-text">&copy;&nbsp;2017 Designed by </span>
                         <a class="navigation__link" href="<?= $aFooterNav[0]->url; ?>" title="Retour à la page d'accueil" rel="home"><?= $aFooterNav[0]->label; ?></a>
                     </li>
                     <li class="navigation__item">
