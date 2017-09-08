@@ -3,7 +3,6 @@
 add_action('init', 'fRegisterTypes');
 add_filter('wp_title', 'fCustomWPTitle');
 add_theme_support('post-thumbnails');
-add_filter('image_size_names_choose', 'my_custom_sizes');
 
 // Define constants
 define('INDEX_PROJECTS_OVERVIEWS_NUM', 2);
