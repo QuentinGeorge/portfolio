@@ -25,7 +25,7 @@ get_header();
                             <h4 class="index__sub-title project__title p-name" itemprop="name"><?php the_title(); ?></h4>
                             <?php if (has_post_thumbnail() === true): ?>
                                 <figure class="project__figure u-photo" itemprop="image">
-                                    <?php the_post_thumbnail('medium_large'); ?>
+                                    <?php the_post_thumbnail('medium'); ?>
                                 </figure>
                             <?php endif; ?>
                         </a>

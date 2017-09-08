@@ -20,7 +20,7 @@ get_header();
                 <h3 class="project__sub-title hidden" role="heading" aria-level="3">Introduction du projet</h3>
                 <?php if (has_post_thumbnail() === true): ?>
                     <figure class="project__figure u-photo" itemprop="image">
-                        <?php the_post_thumbnail('medium_large'); ?>
+                        <?php the_post_thumbnail('medium'); ?>
                     </figure>
                 <?php endif; ?>
                 <p class="project__text" itemprop="description"><?php the_field('introduction_du_projet'); ?></p>

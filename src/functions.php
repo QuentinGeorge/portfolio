@@ -3,6 +3,7 @@
 add_action('init', 'fRegisterTypes');
 add_filter('wp_title', 'fCustomWPTitle');
 add_theme_support('post-thumbnails');
+add_filter('image_size_names_choose', 'my_custom_sizes');
 
 // Define constants
 define('INDEX_PROJECTS_OVERVIEWS_NUM', 2);
@@ -152,7 +153,7 @@ function fGetTechnologies() {
 }
 
 // Get an image from ACF plugin
-function fGetACFImage($sImgField, $sImgSize = 'medium_large') {
+function fGetACFImage($sImgField, $sImgSize = 'medium') {
     $sImgID = get_field($sImgField);
 
 	return $oImg = wp_get_attachment_image($sImgID, $sImgSize);

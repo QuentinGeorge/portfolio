@@ -21,7 +21,7 @@ get_header();
                     <h3 class="projects__title p-name" itemprop="name"><?php the_title(); ?></h3>
                     <a class="projects__link u-url" href="<?php the_permalink(); ?>" title="En savoir plus sur le projet" itemprop="thumbnailUrl">
                         <figure class="projects__figure u-photo" itemprop="image">
-                            <?php the_post_thumbnail('medium_large'); ?>
+                            <?php the_post_thumbnail('medium'); ?>
                         </figure>
                     </a>
                 <?php else: ?>
